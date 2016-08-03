@@ -15,17 +15,17 @@ class ComprarRb < Test::Unit::TestCase
     @driver.manage.timeouts.implicit_wait = 30
     @verification_errors = []
   end
-  
+
   def teardown
     @driver.quit
     assert_equal [], @verification_errors
   end
-  
+
   def test_comprar_rb
     # Dueño de la publicación:
     # TETE150369
     # qatest1952
-    @driver.get(@base_url + "/MLA-629000419-pc-core-i7-prueba-mercadolibre-api-no-ofertar-_JM")
+    @driver.get(@base_url + "/MLA-629990811-pc-i7-no-ofertar-prueba-_JM")
     begin
       @driver.find_element(:link, "Ingresa").click
       @driver.find_element(:id, "user_id").clear
@@ -54,27 +54,27 @@ class ComprarRb < Test::Unit::TestCase
     assert !60.times{ break if (element_present?(:id, "confirmButton") rescue false); sleep 1 }
     @driver.find_element(:id, "confirmButton").click
   end
-  
+
   def element_present?(how, what)
     @driver.find_element(how, what)
     true
   rescue Selenium::WebDriver::Error::NoSuchElementError
     false
   end
-  
+
   def alert_present?()
     @driver.switch_to.alert
     true
   rescue Selenium::WebDriver::Error::NoAlertPresentError
     false
   end
-  
+
   def verify(&blk)
     yield
   rescue Test::Unit::AssertionFailedError => ex
     @verification_errors << ex
   end
-  
+
   def close_alert_and_get_its_text(how, what)
     alert = @driver.switch_to().alert()
     alert_text = alert.text
