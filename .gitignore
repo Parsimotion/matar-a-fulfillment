@@ -1,0 +1,63 @@
+# Managed by secrets-remediation automation.
+# Keep secrets/tokens/passwords out of git.
+
+# Generic env-like files (covers e.g. local.env, local.env.js)
+**env**
+
+# App-specific config that must not be committed
+site.config
+
+# Package manager tokens
+.npmrc
+.yarnrc
+.yarnrc.yml
+
+# Common token/config files (build & tooling)
+settings.xml
+.pypirc
+composer/auth.json
+gradle.properties
+
+# Credential / service account files
+auth.json
+*credentials.json
+service-account*.json
+
+# Docker/Kubernetes credentials
+.docker/config.json
+kubeconfig
+*.kubeconfig
+
+# Keys/certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.csr
+*.jks
+*.keystore
+*.p8
+
+# SSH private keys (common)
+.ssh/
+id_rsa
+id_ecdsa
+id_ed25519
+
+# Terraform variables often contain secrets
+terraform.tfvars
+*.tfvars
+
+# Git credentials helper file (sometimes used with tokens)
+.git-credentials
+
+# Secret directories (avoid committing)
+secrets/
+secret/
+credentials/
+credential/
+
+*.env
+*.env.*
